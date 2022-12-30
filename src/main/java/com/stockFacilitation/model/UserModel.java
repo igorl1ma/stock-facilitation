@@ -1,15 +1,12 @@
-package com.stockFacilitation.entity;
+package com.stockFacilitation.model;
 
-import lombok.*;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import lombok.Getter;
+import lombok.Setter;
 
-@Document(collection = "user")
 @Getter
 @Setter
-public class User {
+public class UserModel {
 
-    @Id
     private String userId;
     private String username;
     private String password;
