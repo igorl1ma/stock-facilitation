@@ -22,17 +22,17 @@ public class SecurityUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username)
             throws UsernameNotFoundException {
 
-        var validateUser = userRepository.findByEmail(username);
+        var validateUser = userRepository.findByUsername(username);
 
         if(validateUser != null){
 
             return new org.springframework.security.core.userdetails.User(
-                    validateUser.getEmail(),
+                    validateUser.getUsername(),
                     validateUser.getPassword(),
-                    validateUser.isEnabled(),
-                    validateUser.isAccountNonExpired(),
-                    validateUser.isCredentialsNonExpired(),
-                    validateUser.isAccountNonLocked(),
+                    validateUser.getEnabled(),
+                    validateUser.getAccountNonExpired(),
+                    validateUser.getCredentialsNonExpired(),
+                    validateUser.getAccountNonLocked(),
                     new ArrayList<>());
         } else {
             throw  new UsernameNotFoundException("User not present");
